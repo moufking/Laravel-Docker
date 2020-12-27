@@ -18,4 +18,11 @@ class ExampleTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+    public function testOtherTest()
+    {
+        $response = $this->get('/dashboard');
+
+        $response->assertStatus(400);
+    }
 }
