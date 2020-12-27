@@ -23,6 +23,6 @@ class ExampleTest extends TestCase
     {
         $response = $this->get('/dashboard');
 
-        $response->assertStatus(400);
+        $response->assertStatus(302);
     }
 }
