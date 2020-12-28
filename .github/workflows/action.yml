@@ -33,11 +33,10 @@ jobs:
         DB_DATABASE: database/database.sqlite
       run: vendor/bin/phpunit
 
-
     - name: 'merging develop in master'
       run: |
             #change branch
-            git checkout master
+            git checkout main
             git merge  develop
             git push
 
