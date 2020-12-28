@@ -33,8 +33,8 @@ jobs:
         DB_DATABASE: database/database.sqlite
       run: vendor/bin/phpunit
 
-     - name: 'add other branch'
-        run: |
+    - name: 'add other branch'
+      run: |
             #change branch
             git checkout -b  test_branch
             git push --set-upstream origin develop
