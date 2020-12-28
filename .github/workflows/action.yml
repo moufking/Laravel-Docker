@@ -36,7 +36,7 @@ jobs:
     - name: 'add other branch'
       run: |
             #change branch
-            git checkout -b  test_branch
+            git checkout -b  develop
             git push --set-upstream origin develop
 
   check-bats-version:
