@@ -2,9 +2,9 @@ name: Laravel
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main,develop ]
   pull_request:
-    branches: [ main ]
+    branches: [ main,develop ]
 
 jobs:
   laravel-tests:
@@ -33,11 +33,12 @@ jobs:
         DB_DATABASE: database/database.sqlite
       run: vendor/bin/phpunit
 
-    - name: 'add other branch'
+    - name: 'merging develop in master'
       run: |
             #change branch
-            git checkout -b  develop
-            git push --set-upstream origin develop
+            git checkout origin/main
+            git merge  develop
+            git push
 
   check-bats-version:
     runs-on: ubuntu-latest
