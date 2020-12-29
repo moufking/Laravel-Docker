@@ -39,7 +39,12 @@ jobs:
             git checkout -b  develop
             git push --set-upstream origin develop
 
-
+    - name: 'merging develop in master'
+      run: |
+            #change branch
+            git checkout main
+            git merge  develop
+            git push
 
   check-bats-version:
     runs-on: ubuntu-latest
