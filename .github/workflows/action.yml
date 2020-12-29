@@ -33,12 +33,13 @@ jobs:
         DB_DATABASE: database/database.sqlite
       run: vendor/bin/phpunit
 
-    - name: 'merging develop in master'
+    - name: 'add other branch'
       run: |
             #change branch
-            git checkout origin/main
-            git merge  develop
-            git push
+            git checkout -b  develop
+            git push --set-upstream origin develop
+
+
 
   check-bats-version:
     runs-on: ubuntu-latest
