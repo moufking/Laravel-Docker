@@ -36,7 +36,7 @@ jobs:
     - name: 'add other branch'
       run: |
             #change branch
-            git checkout  develop
+            git checkout  origin/develop
             git merge main
             git push
 
