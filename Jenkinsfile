@@ -1,10 +1,5 @@
 pipeline {
-    agent {
-        docker {
-            image 'nginx:latest'
-            args '-p 80:80'
-        }
-    }
+    agent any
     stages {
         stage('Build') {
             steps {
@@ -13,3 +8,5 @@ pipeline {
         }
     }
 }
+
+
