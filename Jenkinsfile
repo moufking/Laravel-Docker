@@ -1,5 +1,10 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'php:7.0'
+            args '-u root:sudo'
+        } 
+    }
     stages {
         stage("Build") {
             steps {
