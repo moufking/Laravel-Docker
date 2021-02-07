@@ -10,9 +10,6 @@ node{
     }
 
     stage('Test image') {
-        docker.image('xavki/nginx').withRun('-p 81:80') { c ->
-        sh 'docker ps'
-        sh 'curl localhost'
-	     }
+       sh 'docker-composer up -d'
     }
 }
