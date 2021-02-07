@@ -1,15 +1,18 @@
-pipeline {
-    agent {
-        docker {
-            image 'nginx:latest'
-            args '-p 80:80'
-        }
+node{
+  def app
+
+    stage('Clone') {
+        checkout scm
     }
-    stages {
-        stage('Build') {
-            steps {
-                sh 'cat /etc/nginx/conf.d/default.conf'
-            }
-        }
+
+    stage('Build image') {
+        app = docker.build("laravel/l8")
+    }
+
+    stage('Test image') {
+        docker.image('laravel/l8').withRun('-p 81:80') { c ->
+        sh 'docker ps'
+        sh 'curl localhost'
+	     }
     }
 }
