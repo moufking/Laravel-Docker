@@ -6,11 +6,11 @@ node{
     }
 
     stage('Build image') {
-        app = docker.build("laravel/l8")
+        app = docker.build("xavki/nginx")
     }
 
     stage('Test image') {
-        docker.image('laravel/l8').withRun('-p 82:80') { c ->
+        docker.image('xavki/nginx').withRun('-p 81:80') { c ->
         sh 'docker ps'
         sh 'curl localhost'
 	     }
