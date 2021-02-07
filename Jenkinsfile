@@ -1,15 +1,15 @@
-node{
-  def app
-
-    stage('Clone') {
-        checkout scm
+pipeline {
+    agent {
+        docker {
+            image 'nginx:latest'
+            args '-p 80:80'
+        }
     }
-
-    stage('Build image') {
-        app = docker.build("laravel/l8")
-    }
-
-    stage('Test image') {
-        sh 'docker images'
+    stages {
+        stage('Build') {
+            steps {
+                sh 'cat /etc/nginx/conf.d/default.conf'
+            }
+        }
     }
 }
