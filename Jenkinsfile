@@ -1,34 +1,17 @@
-pipeline {
-agent any
+node{
+  def app
 
-stages {
-    stage('Build') {
-        steps {
-            sh 'composer install --no-interaction'
-            sh 'npm run prod'
-            sh 'run some other commands to compile assets'
-        }
+    stage('Clone') {
+        checkout scm
     }
-    stage('Test') {
-        steps {
 
-            sh './vendor/bin/phpunit'
-
-        }
+    stage('Build image') {
+        app = docker.build("laravel/l8")
     }
-    stage('Deploy') {
-        steps {
 
-        sh 'ssh -o StrictHostKeyChecking=no prod_server_user@prod_server_ip "cd /path/to/your/app_code; \
-            git pull origin master; \
-            composer install --no-interaction --no-dev; \
-            php artisan migrate --force; \
-            php artisan cache:clear; \
-            php artisan config:cache "'
-            // and so on depending on your requirements
-        
-                
-            }
+    stage('Test image') {
+        docker.image('laravel/l8').withRun('-p 80:80') { c ->
+        sh 'docker ps'
+	     }
     }
-}
 }
