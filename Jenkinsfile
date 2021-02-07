@@ -10,7 +10,7 @@ node{
     }
 
     stage('Test image') {
-        docker.image('laravel/l8').withRun('-p 81:81') { c ->
+        docker.image('laravel/l8').withRun('-p 80:81') { c ->
         sh 'docker ps'
 	     }
     }
