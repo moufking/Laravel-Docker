@@ -10,6 +10,6 @@ node{
     }
 
     stage('Test image') {
-       sh 'docker-composer up -d'
+       sh 'docker-compose up -d'
     }
 }
