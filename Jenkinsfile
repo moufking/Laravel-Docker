@@ -10,9 +10,6 @@ node{
     }
 
     stage('Test image') {
-        docker.image('laravel/l8').withRun('-p 80:82') { c ->
-        sh 'docker ps'
-        sh 'curl localhost'
-	     }
+      sh 'docker-compose up -d '
     }
 }
