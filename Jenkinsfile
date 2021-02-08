@@ -13,7 +13,7 @@ node{
          sh 'docker ps'
     }
     
-    stage('run docker compose") {
+    stage('run docker compose') {
           sh 'docker-compose up -d'
-          }
+    }
 }
