@@ -6,7 +6,10 @@ node{
     }
 
     stage('Test image') {
-      sh 'docker ps'
       sh 'docker images'
+    }
+    
+    stage('listing processus') {
+         sh 'docker ps'
     }
 }
