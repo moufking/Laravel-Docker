@@ -28,6 +28,12 @@ RUN useradd -G www-data,root -u $uid -d /home/$user $user
 RUN mkdir -p /home/$user/.composer && \
     chown -R $user:$user /home/$user
 
+
+# Install Xdebug
+RUN yes | pecl install xdebug \
+    && echo "zend_extension=$(find $(php-config --extension-dir) -name xdebug.so)" \
+         > /usr/local/etc/php/conf.d/xdebug.ini
+
 # Set working directory
 WORKDIR /var/www
 

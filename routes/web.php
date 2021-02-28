@@ -1,6 +1,7 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+    use Illuminate\Support\Facades\Log;
+    use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    Log::channel('slack')->critical('Something happened!');
     return view('welcome');
 });
 
